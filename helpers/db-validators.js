@@ -34,9 +34,22 @@ const productExist = async (id = "") => {
   }
 };
 
+const colectionsPermited = async (colection = "", colections = []) => {
+  const isItIn = colections.includes(colection);
+
+  if (!isItIn) {
+    throw new Error(
+      `La coleccion ${colection} no es permitida | ${colections}`
+    );
+  }
+
+  return true;
+};
+
 module.exports = {
   roleValidator,
   emailExist,
   existUserById,
   productExist,
+  colectionsPermited,
 };
